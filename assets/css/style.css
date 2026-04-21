@@ -363,6 +363,20 @@ section {
     text-align: justify;
 }
 
+.about-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
 .about-highlights {
     position: relative;
     width: 100%;
@@ -1114,17 +1128,19 @@ section {
     /* About Section Mobile */
     .about-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
         text-align: center;
-        padding: 0 20px;
+        padding: 0 15px;
+        overflow: visible;
     }
 
     .about-text {
         padding-right: 0;
-        padding: 0 15px;
-        margin-bottom: 30px;
+        padding: 0 10px;
+        margin-bottom: 20px;
         max-width: 100%;
         width: 100%;
+        overflow: visible;
     }
 
     .about-text p {
@@ -1137,7 +1153,12 @@ section {
         hyphens: auto;
         color: #333;
         text-align-last: center;
-        padding: 0 5px;
+        padding: 0 10px;
+        max-width: none;
+        width: auto;
+        box-sizing: border-box;
+        overflow: visible;
+        white-space: normal;
     }
 
     .about-text p:last-child {
@@ -1154,6 +1175,8 @@ section {
     .about-highlights {
         width: 100%;
         max-width: 100%;
+        overflow: visible;
+        margin-bottom: 20px;
     }
 
     .carousel-container {
@@ -1432,24 +1455,89 @@ section {
         flex-shrink: 0;
     }
 
-    /* Additional Mobile Layout Optimizations */
-    .timeline-content {
-        padding: 15px;
-        margin-left: 10px;
+    /* ===== MOBILE FIX FOR ABOUT SECTION ===== */
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
-    .timeline-header {
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+    .about-text {
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 0 10px;
     }
 
-    .timeline-description {
-        margin-top: 15px;
+    .about-highlights {
+        width: 100%;
     }
 
-    .timeline-description li:last-child {
-        margin-bottom: 0;
+    /* Carousel Fix */
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+        padding: 10px 0;
+    }
+
+    .carousel-wrapper {
+        overflow: hidden;
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .highlight-card {
+        flex: 0 0 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        text-align: center;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .highlight-card i {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #4a6cf7;
+    }
+
+    .highlight-card h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .highlight-card p {
+        font-size: 13px;
+    }
+
+    /* Button lebih kecil & rapi */
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    .carousel-btn-prev {
+        left: 5px;
+    }
+
+    .carousel-btn-next {
+        right: 5px;
+    }
+
+    /* Indicator biar lebih clean */
+    .carousel-indicators {
+        margin-top: 10px;
+    }
+
+    .indicator {
+        width: 8px;
+        height: 8px;
     }
 
     /* Better text flow for long content */
