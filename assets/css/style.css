@@ -5,12 +5,19 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f8f9fa;
-    scroll-behavior: smooth;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -1090,200 +1097,6 @@ section {
 
     .education-card {
         padding: 30px 20px;
-    }
-
-    /* Documentation Modal Mobile */
-    .doc-modal-content {
-        width: 95%;
-        height: 80vh;
-    }
-
-    .doc-modal-header {
-        padding: 15px 20px;
-    }
-
-    .doc-modal-header h3 {
-        font-size: 1.2rem;
-    }
-
-    .doc-modal-body {
-        padding: 15px;
-        height: calc(100% - 70px);
-    }
-
-    .doc-carousel-container {
-        height: 300px;
-    }
-
-    .doc-carousel-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
-    }
-
-    .doc-carousel-btn-prev {
-        left: 10px;
-    }
-
-    .doc-carousel-btn-next {
-        right: 10px;
-    }
-
-    .doc-modal-description {
-        font-size: 0.85rem;
-        padding: 10px;
-    }
-
-    /* Certificate Modal Mobile */
-    .cert-modal-content {
-        width: 95%;
-        height: 80vh;
-    }
-
-    .cert-modal-header {
-        padding: 15px 20px;
-    }
-
-    .cert-modal-header h3 {
-        font-size: 1.2rem;
-    }
-
-    .cert-modal-body {
-        padding: 15px;
-        height: calc(100% - 70px);
-    }
-
-    .cert-image-container {
-        height: 250px;
-    }
-
-    .cert-modal-info h4 {
-        font-size: 1.1rem;
-    }
-
-    .cert-modal-info p {
-        font-size: 0.9rem;
-    }
-
-    /* Contact Form Mobile */
-    .contact-form {
-        padding: 30px 20px;
-    }
-
-    .contact-form-group {
-        margin-bottom: 20px;
-    }
-
-    .contact-form label {
-        font-size: 0.9rem;
-        margin-bottom: 8px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 12px 15px;
-        font-size: 0.9rem;
-    }
-
-    .contact-form textarea {
-        min-height: 120px;
-    }
-
-    .contact-form button {
-        padding: 12px 25px;
-        font-size: 0.9rem;
-        width: 100%;
-    }
-
-    .contact-info {
-        padding: 20px;
-    }
-
-    .contact-item {
-        padding: 15px;
-        margin-bottom: 15px;
-    }
-
-    .contact-item i {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    .contact-details h3 {
-        font-size: 1rem;
-        margin-bottom: 5px;
-    }
-
-    .contact-details p {
-        font-size: 0.9rem;
-    }
-
-    /* Additional Mobile Improvements */
-    .hero-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    .profile-image {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-info h3 {
-        font-size: 1.3rem;
-    }
-
-    .profile-info p {
-        font-size: 0.9rem;
-    }
-
-    .timeline-header h3 {
-        font-size: 1.1rem;
-    }
-
-    .timeline-header h4 {
-        font-size: 0.95rem;
-    }
-
-    .timeline-date {
-        font-size: 0.85rem;
-    }
-
-    .skills-item {
-        padding: 15px;
-    }
-
-    .skills-info h4 {
-        font-size: 1rem;
-    }
-
-    .advantage-item {
-        padding: 20px;
-    }
-
-    .advantage-item h3 {
-        font-size: 1.1rem;
-    }
-
-    .certificate-content h3 {
-        font-size: 1.1rem;
-    }
-
-    .certificate-year {
-        font-size: 0.85rem;
-    }
-
-    .certificate-content p {
-        font-size: 0.9rem;
-    }
-
-    .certificate-hint {
-        font-size: 0.8rem;
-    }
-
-    .footer-content p {
-        font-size: 0.85rem;
-        line-height: 1.5;
     }
 }
 
