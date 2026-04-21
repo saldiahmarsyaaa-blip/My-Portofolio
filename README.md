@@ -108,9 +108,9 @@ Website siap di-deploy ke:
 
 ## Contact Information
 
-**Email:** saldyahmarsya@email.com  
-**Phone:** +62 812-3456-7890  
-**Location:** Makassar, Sulawesi Selatan
+**Email:** saldiahmarsyaaa@gmail.com  
+**Phone:** +62 821-9682-2085  
+**Location:** Jakarta Utara, DKI Jakarta
 
 ---
 

@@ -18,6 +18,7 @@ Folder ini berisi file-file gambar yang digunakan dalam portofolio:
 
 ## Format yang Didukung:
 - JPG
+- JPEG
 - PNG
 - WebP
 

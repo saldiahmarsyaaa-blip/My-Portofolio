@@ -748,14 +748,14 @@ if (docTrack) {
 const certificateData = {
     'tax-brevet': {
         title: 'Tax Brevet A & B Training Certificate',
-        image: 'assets/images/tax-brevet-certificate.jpg',
+        image: 'assets/images/Sertifikat-1.JPG',
         name: 'Tax Brevet A & B Training Certificate',
         description: 'Sertifikasi kompetensi dalam perpajakan Indonesia. Mencakup perpajakan orang pribadi dan badan usaha, serta pelaporan pajak yang komprehensif.',
         year: '2024'
     },
     'financial-accounting': {
         title: 'Certificate of Competence in Institutional Financial Accounting',
-        image: 'assets/images/financial-accounting-certificate.jpg',
+        image: 'assets/images/Sertifikat-2.JPG',
         name: 'Certificate of Competence in Institutional Financial Accounting',
         description: 'Sertifikasi kompetensi dalam akuntansi keuangan institusional dari Politeknik Negeri Ujung Pandang.',
         year: '2021'

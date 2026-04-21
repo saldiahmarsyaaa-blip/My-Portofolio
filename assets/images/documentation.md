@@ -16,8 +16,10 @@ Folder ini berisi file-file gambar dokumentasi untuk setiap pengalaman kerja yan
 - `dprd-3.jpeg` - Dokumentasi rekonsiliasi data wajib pajak
 
 ### PT. Bank Tabungan Negara (btn)
-- `BTN-01.jpeg` - Dokumentasi administrasi keuangan
-- `BTN-02.jpeg` - Dokumentasi laporan interim harian
+- `BTN-01.jpeg` - Dokumentasi Pengarsipan dokumen
+- `BTN-02.jpeg` - Dokumentasi Penginputan interim
+- `BTN-03.jpeg` - Dokumentasi Penginputan interim
+- `BTN-04.jpeg` - Dokumentasi Magang
 
 ## Cara Menggunakan:
 
