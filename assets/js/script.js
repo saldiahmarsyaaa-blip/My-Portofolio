@@ -615,7 +615,7 @@ function openDocumentation(experienceId) {
     currentDocSlide = 0;
     
     // Update modal title
-    document.getElementById('docModalTitle').textContent = dat itle;
+    document.getElementById('docModalTitle').textContent = data.title;
     
     // Update description
     document.getElementById('docModalDescription').textContent = data.description;
@@ -750,20 +750,26 @@ if (docTrack) {
 }
 
 // Certificate Modal functionality
+let currentCertSlide = 0;
+let certCarouselData = {};
+
 const certificateData = {
     'tax-brevet': {
         title: 'Tax Brevet A & B Training Certificate',
-        image: [
-		'assets/images/TAX-BREVET-01.png',
-		],
+        images: [
+            'assets/images/TAX-BREVET-01.png',
+            'assets/images/TAX-BREVET-02.png'
+        ],
         name: 'Tax Brevet A & B Training Certificate',
         description: 'Sertifikasi kompetensi dalam perpajakan Indonesia. Mencakup perpajakan orang pribadi dan badan usaha, serta pelaporan pajak yang komprehensif.',
         year: '2024'
     },
     'financial-accounting': {
         title: 'Certificate of Competence in Institutional Financial Accounting',
-        image: 'assets/images/FINANCIAL-ACCOUNTING-01.png',
-		image: 'assets/images/FINANCIAL-ACCOUNTING-02.png',
+        images: [
+            'assets/images/FINANCIAL-ACCOUNTING-01.png', 
+            'assets/images/FINANCIAL-ACCOUNTING-02.png'
+        ],
         name: 'Certificate of Competence in Institutional Financial Accounting',
         description: 'Sertifikasi kompetensi dalam akuntansi keuangan institusional dari Politeknik Negeri Ujung Pandang.',
         year: '2021'
@@ -776,16 +782,90 @@ function openCertificate(certificateId) {
     
     if (!data) return;
     
-    // Update modal content
+    certCarouselData = data;
+    currentCertSlide = 0;
+    
+    // Update modal title
     document.getElementById('certModalTitle').textContent = data.title;
-    document.getElementById('certImage').src = data.image;
+    
+    // Update certificate info
     document.getElementById('certName').textContent = data.name;
     document.getElementById('certDescription').textContent = data.description;
     document.getElementById('certYear').textContent = `Tahun: ${data.year}`;
     
+    // Load certificate images
+    loadCertImages();
+    
     // Show modal
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+}
+
+function loadCertImages() {
+    const track = document.getElementById('certCarouselTrack');
+    const indicators = document.getElementById('certCarouselIndicators');
+    
+    // Clear existing content
+    track.innerHTML = '';
+    indicators.innerHTML = '';
+    
+    // Add images
+    certCarouselData.images.forEach((imageSrc, index) => {
+        // Create slide
+        const slide = document.createElement('div');
+        slide.className = 'cert-carousel-slide';
+        
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        img.alt = `Certificate image ${index + 1}`;
+        img.onerror = function() {
+            this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-family="Arial" font-size="16">Sertifikat tidak tersedia</text></svg>';
+        };
+        
+        slide.appendChild(img);
+        track.appendChild(slide);
+        
+        // Create indicator
+        const indicator = document.createElement('button');
+        indicator.className = 'cert-indicator';
+        if (index === 0) indicator.classList.add('active');
+        indicator.onclick = () => goToCertSlide(index);
+        indicators.appendChild(indicator);
+    });
+    
+    updateCertCarousel();
+}
+
+function changeCertSlide(direction) {
+    const totalSlides = certCarouselData.images.length;
+    
+    if (direction === 1) {
+        currentCertSlide = (currentCertSlide + 1) % totalSlides;
+    } else {
+        currentCertSlide = (currentCertSlide - 1 + totalSlides) % totalSlides;
+    }
+    
+    updateCertCarousel();
+}
+
+function goToCertSlide(slideIndex) {
+    currentCertSlide = slideIndex;
+    updateCertCarousel();
+}
+
+function updateCertCarousel() {
+    const track = document.getElementById('certCarouselTrack');
+    const indicators = document.querySelectorAll('.cert-indicator');
+    
+    // Update track position
+    const slideWidth = 100;
+    const offset = -currentCertSlide * slideWidth;
+    track.style.transform = `translateX(${offset}%)`;
+    
+    // Update indicators
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentCertSlide);
+    });
 }
 
 function closeCertificate() {
@@ -801,13 +881,47 @@ document.addEventListener('keydown', (e) => {
     
     if (e.key === 'Escape') {
         closeCertificate();
+    } else if (e.key === 'ArrowLeft') {
+        changeCertSlide(-1);
+    } else if (e.key === 'ArrowRight') {
+        changeCertSlide(1);
     }
 });
 
-// Error handling for certificate images
-document.getElementById('certImage').addEventListener('error', function() {
-    this.style.display = 'none';
-    this.nextElementSibling.style.display = 'flex';
+// Touch/swipe support for certificate carousel
+let certTouchStartX = 0;
+let certTouchCurrentX = 0;
+let certIsDragging = false;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const certTrack = document.getElementById('certCarouselTrack');
+    if (certTrack) {
+        certTrack.addEventListener('touchstart', (e) => {
+            certTouchStartX = e.touches[0].clientX;
+            certIsDragging = true;
+        });
+        
+        certTrack.addEventListener('touchmove', (e) => {
+            if (!certIsDragging) return;
+            certTouchCurrentX = e.touches[0].clientX;
+        });
+        
+        certTrack.addEventListener('touchend', () => {
+            if (!certIsDragging) return;
+            certIsDragging = false;
+            
+            const diff = certTouchStartX - certTouchCurrentX;
+            const threshold = 50;
+            
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    changeCertSlide(1);
+                } else {
+                    changeCertSlide(-1);
+                }
+            }
+        });
+    }
 });
 
 console.log('Carousel initialized successfully!');
