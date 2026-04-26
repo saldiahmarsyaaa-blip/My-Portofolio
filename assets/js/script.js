@@ -572,29 +572,34 @@ const documentationData = {
     bki: {
         title: "Dokumentasi - PT. Biro Klasifikasi Indonesia",
         images: [
-            "assets/images/bki-1.jpg",
-            "assets/images/bki-2.jpg", 
-            "assets/images/bki-3.jpg",
-            "assets/images/bki-4.jpg"
+            "assets/images/BKI-05.jpeg",
+            "assets/images/BKI-04.jpeg", 
+            "assets/images/BKI-03.jpeg",
+            "assets/images/BKI-02.jpeg",
+			"assets/images/BKI-01.jpeg"
         ],
         description: "Dokumentasi kegiatan sebagai Finance Intern di PT. Biro Klasifikasi Indonesia. Meliputi proses administrasi perpajakan menggunakan Coretax, rekonsiliasi data pajak, dan pelaporan SPT Masa."
     },
     dprd: {
         title: "Dokumentasi - Sekretariat DPRD Sulawesi Selatan",
         images: [
-            "assets/images/dprd-1.jpg",
-            "assets/images/DPRD-01.jpg",
-            "assets/images/dprd-3.jpg"
+            "assets/images/DPRD-02.jpg",
+            "assets/images/DPRD-03.jpg",
+            "assets/images/DPRD-04.jpg",
+			"assets/images/DPRD-01.png",
+			"assets/images/DPRD-05.jpg",
+			"assets/images/DPRD-06.png"
         ],
         description: "Dokumentasi kegiatan sebagai Program and Finance Intern di Sekretariat DPRD Sulawesi Selatan. Meliputi penggunaan sistem SIADINDA, verifikasi dokumen keuangan, dan rekonsiliasi data wajib pajak."
     },
     btn: {
         title: "Dokumentasi - PT. Bank Tabungan Negara",
         images: [
-            "assets/images/BTN-01.jpeg",
-            "assets/images/BTN-02.jpeg",
             "assets/images/BTN-03.jpeg",
-            "assets/images/BTN-04.jpeg"
+            "assets/images/BTN-02.jpeg",
+            "assets/images/BTN-01.jpeg",
+            "assets/images/BTN-04.jpeg",
+			"assets/images/BTN-05.png"
         ],
         description: "Dokumentasi kegiatan sebagai General Support Intern di PT. Bank Tabungan Negara. Meliputi pengarsipan dokumen, penginputan interim, dan kegiatan magang."
     }
@@ -748,14 +753,16 @@ if (docTrack) {
 const certificateData = {
     'tax-brevet': {
         title: 'Tax Brevet A & B Training Certificate',
-        image: 'assets/images/Sertifikat-1.JPG',
+        image: 'assets/images/SERTIFIKAT BREVET A&B.png',
+		image: 'assets/images/SERTIFIKAT BREVET A&B 2.png',
         name: 'Tax Brevet A & B Training Certificate',
         description: 'Sertifikasi kompetensi dalam perpajakan Indonesia. Mencakup perpajakan orang pribadi dan badan usaha, serta pelaporan pajak yang komprehensif.',
         year: '2024'
     },
     'financial-accounting': {
         title: 'Certificate of Competence in Institutional Financial Accounting',
-        image: 'assets/images/Sertifikat-2.JPG',
+        image: 'assets/images/SERTIFIKAT UKK-01.png',
+		image: 'assets/images/SERTIFIKAT UKK-02.png',
         name: 'Certificate of Competence in Institutional Financial Accounting',
         description: 'Sertifikasi kompetensi dalam akuntansi keuangan institusional dari Politeknik Negeri Ujung Pandang.',
         year: '2021'
