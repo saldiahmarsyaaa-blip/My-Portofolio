@@ -615,7 +615,7 @@ function openDocumentation(experienceId) {
     currentDocSlide = 0;
     
     // Update modal title
-    document.getElementById('docModalTitle').textContent = data.title;
+    document.getElementById('docModalTitle').textContent = dat itle;
     
     // Update description
     document.getElementById('docModalDescription').textContent = data.description;
@@ -753,8 +753,9 @@ if (docTrack) {
 const certificateData = {
     'tax-brevet': {
         title: 'Tax Brevet A & B Training Certificate',
-        image: 'assets/images/TAX-BREVET-01.png', 
-		image: 'assets/images/TAX-BREVET-02.png',
+        image: [
+		'assets/images/TAX-BREVET-01.png',
+		],
         name: 'Tax Brevet A & B Training Certificate',
         description: 'Sertifikasi kompetensi dalam perpajakan Indonesia. Mencakup perpajakan orang pribadi dan badan usaha, serta pelaporan pajak yang komprehensif.',
         year: '2024'
