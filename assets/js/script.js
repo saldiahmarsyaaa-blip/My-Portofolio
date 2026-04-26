@@ -578,7 +578,7 @@ const documentationData = {
             "assets/images/BKI-02.jpeg",
 			"assets/images/BKI-01.jpeg"
         ],
-        description: "Dokumentasi kegiatan sebagai Finance Intern di PT. Biro Klasifikasi Indonesia. Meliputi proses administrasi perpajakan menggunakan Coretax, rekonsiliasi data pajak, dan pelaporan SPT Masa."
+        description: "Dokumentasi kegiatan sebagai Finance Intern di PT. Biro Klasifikasi Indonesia. Meliputi proses administrasi perpajakan menggunakan Coretax, rekonsiliasi data pajak, dan persiapan pelaporan SPT Masa (PPh Unifikasi dan PPN)."
     },
     dprd: {
         title: "Dokumentasi - Sekretariat DPRD Sulawesi Selatan",
@@ -586,9 +586,9 @@ const documentationData = {
             "assets/images/DPRD-02.jpg",
             "assets/images/DPRD-03.jpg",
             "assets/images/DPRD-04.jpg",
+			"assets/images/DPRD-06.jpg",
 			"assets/images/DPRD-01.png",
-			"assets/images/DPRD-05.jpg",
-			"assets/images/DPRD-06.png"
+			"assets/images/DPRD-05.png"
         ],
         description: "Dokumentasi kegiatan sebagai Program and Finance Intern di Sekretariat DPRD Sulawesi Selatan. Meliputi penggunaan sistem SIADINDA, verifikasi dokumen keuangan, dan rekonsiliasi data wajib pajak."
     },
