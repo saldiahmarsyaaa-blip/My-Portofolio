@@ -583,7 +583,7 @@ const documentationData = {
         title: "Dokumentasi - Sekretariat DPRD Sulawesi Selatan",
         images: [
             "assets/images/dprd-1.jpg",
-            "assets/images/dprd-2.jpg",
+            "assets/images/DPRD-01.jpg",
             "assets/images/dprd-3.jpg"
         ],
         description: "Dokumentasi kegiatan sebagai Program and Finance Intern di Sekretariat DPRD Sulawesi Selatan. Meliputi penggunaan sistem SIADINDA, verifikasi dokumen keuangan, dan rekonsiliasi data wajib pajak."
