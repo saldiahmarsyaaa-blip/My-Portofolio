@@ -588,7 +588,7 @@ const documentationData = {
             "assets/images/DPRD-04.jpg",
 			"assets/images/DPRD-06.jpg",
 			"assets/images/DPRD-01.png",
-			"assets/images/DPRD-05.png"
+			"assets/images/DPRD-05.jpg"
         ],
         description: "Dokumentasi kegiatan sebagai Program and Finance Intern di Sekretariat DPRD Sulawesi Selatan. Meliputi penggunaan sistem SIADINDA, verifikasi dokumen keuangan, dan rekonsiliasi data wajib pajak."
     },
@@ -753,16 +753,16 @@ if (docTrack) {
 const certificateData = {
     'tax-brevet': {
         title: 'Tax Brevet A & B Training Certificate',
-        image: 'assets/images/SERTIFIKAT BREVET A&B.png',
-		image: 'assets/images/SERTIFIKAT BREVET A&B 2.png',
+        image: 'assets/images/TAX-BREVET-01.png', 
+		image: 'assets/images/TAX-BREVET-02.png',
         name: 'Tax Brevet A & B Training Certificate',
         description: 'Sertifikasi kompetensi dalam perpajakan Indonesia. Mencakup perpajakan orang pribadi dan badan usaha, serta pelaporan pajak yang komprehensif.',
         year: '2024'
     },
     'financial-accounting': {
         title: 'Certificate of Competence in Institutional Financial Accounting',
-        image: 'assets/images/SERTIFIKAT UKK-01.png',
-		image: 'assets/images/SERTIFIKAT UKK-02.png',
+        image: 'assets/images/FINANCIAL-ACCOUNTING-01.png',
+		image: 'assets/images/FINANCIAL-ACCOUNTING-02.png',
         name: 'Certificate of Competence in Institutional Financial Accounting',
         description: 'Sertifikasi kompetensi dalam akuntansi keuangan institusional dari Politeknik Negeri Ujung Pandang.',
         year: '2021'
