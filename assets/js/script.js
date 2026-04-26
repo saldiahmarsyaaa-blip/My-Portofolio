@@ -750,8 +750,8 @@ if (docTrack) {
 }
 
 // Certificate Modal functionality
-let currentCertSlide = 0;
-let certCarouselData = {};
+let currentCertificateImage = 0;
+let currentCertificateData = null;
 
 const certificateData = {
     'tax-brevet': {
@@ -776,137 +776,167 @@ const certificateData = {
     }
 };
 
-function openCertificate(certificateId) {
-    const modal = document.getElementById('certModal');
-    const data = certificateData[certificateId];
+function openCertificate(type) {
+    const modal = document.getElementById("certificateModal");
+    const detailContainer = document.getElementById("certificateDetail");
+    const titleElement = document.getElementById("certificateModalTitle");
+    const data = certificateData[type];
     
     if (!data) return;
     
-    certCarouselData = data;
-    currentCertSlide = 0;
+    // Set current certificate data and reset image index
+    currentCertificateData = data;
+    currentCertificateImage = 0;
     
-    // Update modal title
-    document.getElementById('certModalTitle').textContent = data.title;
-    
-    // Update certificate info
-    document.getElementById('certName').textContent = data.name;
-    document.getElementById('certDescription').textContent = data.description;
-    document.getElementById('certYear').textContent = `Tahun: ${data.year}`;
-    
-    // Load certificate images
-    loadCertImages();
-    
-    // Show modal
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function loadCertImages() {
-    const track = document.getElementById('certCarouselTrack');
-    const indicators = document.getElementById('certCarouselIndicators');
+    // Set modal title
+    titleElement.textContent = data.title;
     
     // Clear existing content
-    track.innerHTML = '';
-    indicators.innerHTML = '';
+    detailContainer.innerHTML = '';
+    
+    // Create certificate content
+    const certificateDiv = document.createElement('div');
+    certificateDiv.className = 'certificate-detail';
     
     // Add images
-    certCarouselData.images.forEach((imageSrc, index) => {
-        // Create slide
-        const slide = document.createElement('div');
-        slide.className = 'cert-carousel-slide';
-        
+    data.images.forEach((imageSrc, index) => {
         const img = document.createElement('img');
         img.src = imageSrc;
-        img.alt = `Certificate image ${index + 1}`;
+        img.alt = `${data.name} - Image ${index + 1}`;
+        img.className = index === 0 ? 'active' : '';
         img.onerror = function() {
             this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f9fa"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%23666" font-family="Arial" font-size="16">Sertifikat tidak tersedia</text></svg>';
         };
-        
-        slide.appendChild(img);
-        track.appendChild(slide);
-        
-        // Create indicator
-        const indicator = document.createElement('button');
-        indicator.className = 'cert-indicator';
-        if (index === 0) indicator.classList.add('active');
-        indicator.onclick = () => goToCertSlide(index);
-        indicators.appendChild(indicator);
+        certificateDiv.appendChild(img);
     });
     
-    updateCertCarousel();
-}
-
-function changeCertSlide(direction) {
-    const totalSlides = certCarouselData.images.length;
-    
-    if (direction === 1) {
-        currentCertSlide = (currentCertSlide + 1) % totalSlides;
-    } else {
-        currentCertSlide = (currentCertSlide - 1 + totalSlides) % totalSlides;
+    // Add navigation between image and description (only if multiple images)
+    if (data.images.length > 1) {
+        const navigationDiv = document.createElement('div');
+        navigationDiv.className = 'cert-image-navigation';
+        
+        // Previous button
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'cert-nav-btn cert-nav-prev';
+        prevBtn.onclick = () => changeCertificateImage(-1);
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        navigationDiv.appendChild(prevBtn);
+        
+        // Indicators
+        const indicatorsDiv = document.createElement('div');
+        indicatorsDiv.className = 'cert-indicators';
+        
+        data.images.forEach((_, index) => {
+            const indicator = document.createElement('button');
+            indicator.className = 'cert-indicator' + (index === 0 ? ' active' : '');
+            indicator.onclick = () => goToCertificateImage(index);
+            indicatorsDiv.appendChild(indicator);
+        });
+        
+        navigationDiv.appendChild(indicatorsDiv);
+        
+        // Next button
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'cert-nav-btn cert-nav-next';
+        nextBtn.onclick = () => changeCertificateImage(1);
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        navigationDiv.appendChild(nextBtn);
+        
+        certificateDiv.appendChild(navigationDiv);
     }
     
-    updateCertCarousel();
-}
-
-function goToCertSlide(slideIndex) {
-    currentCertSlide = slideIndex;
-    updateCertCarousel();
-}
-
-function updateCertCarousel() {
-    const track = document.getElementById('certCarouselTrack');
-    const indicators = document.querySelectorAll('.cert-indicator');
+    // Add certificate info
+    const title = document.createElement('h3');
+    title.textContent = data.name;
+    certificateDiv.appendChild(title);
     
-    // Update track position
-    const slideWidth = 100;
-    const offset = -currentCertSlide * slideWidth;
-    track.style.transform = `translateX(${offset}%)`;
+    const description = document.createElement('p');
+    description.textContent = data.description;
+    certificateDiv.appendChild(description);
+    
+    const year = document.createElement('p');
+    year.className = 'year';
+    year.textContent = `Tahun: ${data.year}`;
+    certificateDiv.appendChild(year);
+    
+    detailContainer.appendChild(certificateDiv);
+    
+    // Show modal
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+function changeCertificateImage(direction) {
+    if (!currentCertificateData) return;
+    
+    const totalImages = currentCertificateData.images.length;
+    currentCertificateImage = (currentCertificateImage + direction + totalImages) % totalImages;
+    
+    updateCertificateImage();
+}
+
+function goToCertificateImage(index) {
+    if (!currentCertificateData) return;
+    
+    currentCertificateImage = index;
+    updateCertificateImage();
+}
+
+function updateCertificateImage() {
+    if (!currentCertificateData) return;
+    
+    // Update images
+    const images = document.querySelectorAll('.certificate-detail img');
+    images.forEach((img, index) => {
+        img.classList.toggle('active', index === currentCertificateImage);
+    });
     
     // Update indicators
+    const indicators = document.querySelectorAll('.cert-indicator');
     indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentCertSlide);
+        indicator.classList.toggle('active', index === currentCertificateImage);
     });
 }
 
 function closeCertificate() {
-    const modal = document.getElementById('certModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById("certificateModal");
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
 }
 
 // Keyboard navigation for certificate modal
 document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('certModal');
-    if (!modal.classList.contains('active')) return;
+    const modal = document.getElementById("certificateModal");
+    if (modal.style.display !== "block") return;
     
     if (e.key === 'Escape') {
         closeCertificate();
     } else if (e.key === 'ArrowLeft') {
-        changeCertSlide(-1);
+        changeCertificateImage(-1);
     } else if (e.key === 'ArrowRight') {
-        changeCertSlide(1);
+        changeCertificateImage(1);
     }
 });
 
-// Touch/swipe support for certificate carousel
+// Touch/swipe support for certificate images
 let certTouchStartX = 0;
 let certTouchCurrentX = 0;
 let certIsDragging = false;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const certTrack = document.getElementById('certCarouselTrack');
-    if (certTrack) {
-        certTrack.addEventListener('touchstart', (e) => {
+    const detailContainer = document.getElementById("certificateDetail");
+    if (detailContainer) {
+        detailContainer.addEventListener('touchstart', (e) => {
             certTouchStartX = e.touches[0].clientX;
             certIsDragging = true;
         });
         
-        certTrack.addEventListener('touchmove', (e) => {
+        detailContainer.addEventListener('touchmove', (e) => {
             if (!certIsDragging) return;
             certTouchCurrentX = e.touches[0].clientX;
         });
         
-        certTrack.addEventListener('touchend', () => {
+        detailContainer.addEventListener('touchend', () => {
             if (!certIsDragging) return;
             certIsDragging = false;
             
@@ -915,12 +945,20 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (Math.abs(diff) > threshold) {
                 if (diff > 0) {
-                    changeCertSlide(1);
+                    changeCertificateImage(1);
                 } else {
-                    changeCertSlide(-1);
+                    changeCertificateImage(-1);
                 }
             }
         });
+    }
+});
+
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById("certificateModal");
+    if (e.target === modal) {
+        closeCertificate();
     }
 });
 

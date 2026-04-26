@@ -447,37 +447,14 @@
 </div>
 
 <!-- Certificate Modal -->
-<div id="certModal" class="cert-modal">
-    <div class="cert-modal-overlay" onclick="closeCertificate()"></div>
-    <div class="cert-modal-content">
-        <div class="cert-modal-header">
-            <h3 id="certModalTitle">Sertifikat</h3>
-            <button class="cert-modal-close" onclick="closeCertificate()">
-                <i class="fas fa-times"></i>
-            </button>
+<div id="certificateModal" class="certificate-modal">
+    <div class="certificate-modal-content">
+        <div class="certificate-modal-header">
+            <h2 id="certificateModalTitle">Sertifikat</h2>
+            <span class="close-btn" onclick="closeCertificate()">&times;</span>
         </div>
-        <div class="cert-modal-body">
-            <div class="cert-carousel-container">
-                <div class="cert-carousel-wrapper">
-                    <div class="cert-carousel-track" id="certCarouselTrack">
-                        <!-- Certificate images will be dynamically loaded here -->
-                    </div>
-                </div>
-                <button class="cert-carousel-btn cert-carousel-btn-prev" onclick="changeCertSlide(-1)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="cert-carousel-btn cert-carousel-btn-next" onclick="changeCertSlide(1)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <div class="cert-carousel-indicators" id="certCarouselIndicators">
-                    <!-- Indicators will be dynamically loaded here -->
-                </div>
-            </div>
-            <div class="cert-modal-info">
-                <h4 id="certName">Nama Sertifikat</h4>
-                <p id="certDescription">Deskripsi sertifikat</p>
-                <p id="certYear">Tahun: 2024</p>
-            </div>
+        <div id="certificateDetail">
+            <!-- Certificate content will be dynamically loaded here -->
         </div>
     </div>
 </div>

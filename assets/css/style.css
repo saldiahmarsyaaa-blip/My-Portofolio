@@ -1997,133 +1997,131 @@ section {
 }
 
 /* Certificate Modal */
-.cert-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2000;
+.certificate-modal {
     display: none;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.3s ease;
-}
-
-.cert-modal.active {
-    display: flex;
-}
-
-.cert-modal-overlay {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    z-index: 9999;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+    padding: 40px 20px;
 }
 
-.cert-modal-content {
-    position: relative;
-    background: white;
-    border-radius: 20px;
-    max-width: 90%;
-    max-height: 90%;
-    width: 700px;
-    height: auto;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.3s ease;
+.certificate-modal-content {
+    background: #fff;
+    margin: auto;
+    padding: 0;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.cert-modal-header {
+.certificate-modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 30px;
+    padding: 20px;
     border-bottom: 1px solid #e9ecef;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    border-radius: 12px 12px 0 0;
 }
 
-.cert-modal-header h3 {
+.certificate-modal-header h2 {
     margin: 0;
     font-size: 1.5rem;
     font-weight: 600;
 }
 
-.cert-modal-close {
-    background: rgba(255, 255, 255, 0.2);
+.close-btn {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: none;
     border: none;
+    padding: 0;
+    line-height: 1;
+}
+
+.close-btn:hover {
     color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    transition: all 0.3s ease;
 }
 
-.cert-modal-close:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+/* Custom scrollbar */
+.certificate-modal-content::-webkit-scrollbar {
+    width: 6px;
 }
 
-.cert-modal-body {
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Certificate Carousel Styles */
-.cert-carousel-container {
-    position: relative;
-    width: 100%;
-    max-height: 400px;
-    background: #f8f9fa;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.cert-carousel-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.cert-carousel-track {
-    display: flex;
-    transition: transform 0.3s ease;
-    height: 100%;
-}
-
-.cert-carousel-slide {
-    min-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.cert-carousel-slide img {
-    max-width: 100%;
-    max-height: 360px;
-    object-fit: contain;
+.certificate-modal-content::-webkit-scrollbar-thumb {
+    background: #888;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.cert-carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
+.certificate-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Certificate content styling */
+.certificate-detail {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.certificate-detail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.certificate-detail img.active {
+    display: block;
+}
+
+.certificate-detail h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.certificate-detail p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.certificate-detail .year {
+    font-weight: 600;
+    color: #667eea;
+}
+
+/* Certificate Navigation - positioned between image and description */
+.cert-image-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.cert-nav-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
     border: none;
     width: 40px;
     height: 40px;
@@ -2133,75 +2131,141 @@ section {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 10;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    font-size: 14px;
 }
 
-.cert-carousel-btn:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: translateY(-50%) scale(1.1);
+.cert-nav-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-.cert-carousel-btn-prev {
-    left: 10px;
+.cert-nav-btn:active {
+    transform: scale(0.95);
 }
 
-.cert-carousel-btn-next {
-    right: 10px;
-}
-
-.cert-carousel-indicators {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+.cert-indicators {
     display: flex;
     gap: 8px;
-    z-index: 10;
 }
 
 .cert-indicator {
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    background: #ddd;
     border: none;
-    background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .cert-indicator.active {
-    background: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     transform: scale(1.2);
 }
 
 .cert-indicator:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: #bbb;
 }
 
-/* Hide carousel controls when only one image */
-.cert-carousel-container:has(.cert-carousel-slide:only-child) .cert-carousel-btn,
-.cert-carousel-container:has(.cert-carousel-slide:only-child) .cert-carousel-indicators {
+.cert-indicator.active:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Hide navigation when only one image */
+.cert-image-navigation:has(.cert-indicators:empty) {
     display: none;
 }
 
-.cert-modal-info {
-    text-align: center;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .certificate-modal {
+        padding: 20px 10px;
+    }
+    
+    .certificate-modal-header {
+        padding: 15px 20px;
+    }
+    
+    .certificate-modal-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .close-btn {
+        font-size: 24px;
+    }
+    
+    .certificate-detail {
+        padding: 15px;
+    }
+    
+    .certificate-detail h3 {
+        font-size: 1.3rem;
+    }
+    
+    .certificate-detail p {
+        font-size: 0.9rem;
+    }
+    
+    .cert-image-navigation {
+        margin: 15px 0;
+        padding: 12px;
+    }
+    
+    .cert-nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+    
+    .cert-indicator {
+        width: 6px;
+        height: 6px;
+    }
 }
 
-.cert-modal-info h4 {
-    font-size: 1.3rem;
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.cert-modal-info p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 5px;
-}
-
-.cert-modal-info p:last-child {
-    font-weight: 500;
-    color: #667eea;
+@media (max-width: 480px) {
+    .certificate-modal {
+        padding: 10px 5px;
+    }
+    
+    .certificate-modal-header {
+        padding: 12px 15px;
+    }
+    
+    .certificate-modal-header h2 {
+        font-size: 1.1rem;
+    }
+    
+    .close-btn {
+        font-size: 20px;
+    }
+    
+    .certificate-detail {
+        padding: 10px;
+    }
+    
+    .certificate-detail h3 {
+        font-size: 1.1rem;
+    }
+    
+    .certificate-detail p {
+        font-size: 0.85rem;
+    }
+    
+    .cert-image-navigation {
+        margin: 10px 0;
+        padding: 10px;
+    }
+    
+    .cert-nav-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+    }
+    
+    .cert-indicator {
+        width: 5px;
+        height: 5px;
+    }
 }
